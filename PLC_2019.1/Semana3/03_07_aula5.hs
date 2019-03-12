@@ -20,4 +20,10 @@ ehPar :: Int -> Bool
 ehPar x = ( mod x 2 ) == 0
 
 dobrarLista :: [Int] - > [Int]
-dobrarLista l = [ 2*x | z <- l ]
+dobrarLista l = [ 2*x | x <- l ]
+
+dobrarListaPar :: [Int] - > [Int]
+dobrarListaPar l = [ 2*x | x <- l, ehPar x ]
+
+somarPares :: [(Int, Int )] -> [Int]
+somarParesl = []
