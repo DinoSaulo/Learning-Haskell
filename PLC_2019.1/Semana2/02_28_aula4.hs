@@ -21,6 +21,16 @@ repeticao :: Int -> Char -> String
 repeticao 0 ch = []
 repeticao n ch = [ch] ++ repeticao (n-1) ch
 
+{-
+
+repeticao 3 'a'
+= [a] ++ repeticao 2 'a' 
+= [a] ++ [a] ++ repeticao 1 'a' 
+= [a] ++ [a] ++ [a] ++ repeticao 0 'a' 
+= [a] ++ [a] ++ [a] ++ []
+
+-}
+
 mtake _ [] = []
 mtake 0 _ = []
 mtake n (x:xs) = x : mtake (n-1) xs
@@ -31,6 +41,20 @@ mtake n (x:xs) = x : mtake (n-1) xs
 iSort :: [Int] -> [Int]
 iSort [] = []
 iSort (x:xs) = ins x (iSort xs)
+
+{-
+
+iSort [3, 2, 5]
+= ins 3 iSort [2, 5]
+= ins 3 iSort [2, 5]
+= ins 3 ( ins 2 iSort [5])
+= ins 3 ( ins 2 (ins 5 iSort []))
+= ins 3 ( ins 2 (ins 5 [] ))
+= ins 3 ( ins 2 [5] )
+= ins 3 [2, 5]
+= [2, 3, 5]
+
+-}
 
 ins :: Int -> [Int] -> [Int]
 ins x [] = [x]
@@ -47,4 +71,3 @@ double (x:xs) = [x * 2] ++ double xs
 
 -- determinar se um valor faz parte de uma lista
 
-member :: [Int] -> Int -> Bool

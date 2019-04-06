@@ -74,3 +74,35 @@ fatorial :: Int -> Int
 fatorial x
  | x == 0    = 1                      -- caso base
  | otherwise =  x * fatorial (x-1)    -- caso recursivo
+
+fatorialCasamPadrao :: Int -> Int
+fatorialCasamPadrao 0 = 1
+fatorialCasamPadrao n = n * fatorialCasamPadrao (n-1)
+
+somaQuadrados :: Int -> Int -> Int -> Int
+somaQuadrados x y z = sqX + sqY + sqZ
+  where sqX = x * x
+        sqY = y * y
+        sqZ = z * z
+
+somaQuadrados2 :: Int -> Int -> Int
+somaQuadrados2 x y = sq x + sq y
+    where sq n = n * n
+
+duasRaizes :: Float -> Float -> Float -> (Float, Float)
+duasRaizes a b c = (p - t ,  p + t)
+    where
+        p = (-b /(2* a))
+        t = (sqrt (b^2 - 4.0 * a * c) / (2.0 * a))
+
+-- Calculo de raiz
+umaRaiz :: Float -> Float -> Float -> Float
+umaRaiz a b c = - b / (2.0 * a)
+
+raizes :: Float -> Float -> Float -> String
+raizes a b c 
+    | b^2 == 4.0 * a * c = show (umaRaiz a b c)
+    | b^2 > 4.0 * a * c  =  show (fst (duasRaizes a b c))
+                            ++ " "
+                            ++ show (snd (duasRaizes a b c))
+    | otherwise = "nao hah raizes"
